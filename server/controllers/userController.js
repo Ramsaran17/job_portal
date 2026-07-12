@@ -19,14 +19,19 @@ export const getUserData = async (req, res) => {
         console.log("Mongo User:", user);
 
         if (!user) {
-            return res.json({ success: false, message: "User Not Found" });
+            return res.json({
+                success:false,
+                message:"User Not Found"
+            });
         }
 
-        res.json({ success: true, user });
+        res.json({
+            success:true,
+            user
+        });
 
-    } catch (error) {
-        console.log(error);
-        res.json({ success: false, message: error.message });
+    } catch(err){
+        console.log(err);
     }
 }
 
