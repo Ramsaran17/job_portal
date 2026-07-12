@@ -10,13 +10,11 @@ export const getUserData = async (req, res) => {
 
     const { userId } = getAuth(req);
 
-    console.log("User ID:", userId);
 
     try {
 
         const user = await User.findById(userId);
 
-        console.log("Mongo User:", user);
 
         if (!user) {
             return res.json({
