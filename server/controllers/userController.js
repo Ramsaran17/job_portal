@@ -6,24 +6,28 @@ import { v2 as cloudinary} from "cloudinary"
 
 //Get user data
 export const getUserData = async (req, res) => {
-   
-    const userId = req.auth.userId
+
+    console.log("Auth:", req.auth);
+    console.log("User ID:", req.auth?.userId);
+
+    const userId = req.auth.userId;
 
     try {
 
-        const user = await User.findById(userId)
+        const user = await User.findById(userId);
+
+        console.log("Mongo User:", user);
 
         if (!user) {
-            return res.json({ success: false, message: 'User Not Found' })
+            return res.json({ success: false, message: "User Not Found" });
         }
-        res.json({ success: true, user })
+
+        res.json({ success: true, user });
 
     } catch (error) {
-
-        res.json({success:false, message: error.message})
-
+        console.log(error);
+        res.json({ success: false, message: error.message });
     }
-
 }
 
 
