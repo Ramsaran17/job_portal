@@ -21,6 +21,18 @@ const Applications = () => {
 
   const { backendUrl, userData, userApplications, fetchUserData, fetchUserApplications } = useContext(AppContext)
 
+  if (!userData) {
+  return (
+    <>
+      <Navbar />
+      <div className="container px-4 min-h-[65vh] 2xl:px-20 mx-auto my-10">
+        Loading...
+      </div>
+      <Footer />
+    </>
+  );
+}
+
   const updateResume = async () => {
 
     try {
@@ -65,7 +77,7 @@ const Applications = () => {
 
         <div className='flex gap-2 mb-6 mt-3'>
           {
-            isEdit || userData && userData.resume === " " ? (
+            isEdit || !userData?.resume ? (
               <>
                 <label className='flex items-center' htmlFor="resumeUpload">
                   <p className='bg-blue-100 text-blue-600 px-4 py-2 rounded-lg mr-2'>{resume ? resume.name : "Select Resume"}</p>
@@ -76,7 +88,12 @@ const Applications = () => {
               </>
             ) : (
               <div className='flex gap-2'>
-                <a target='_blank' href={userData.resume} className='bg-blue-100 text-blue-600 px-4 py-2 rounded-lg'>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={userData?.resume}
+                  className='bg-blue-100 text-blue-600 px-4 py-2 rounded-lg'
+                >
                   Resume
                 </a>
 

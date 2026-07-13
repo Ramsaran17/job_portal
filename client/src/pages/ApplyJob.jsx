@@ -34,7 +34,7 @@ const ApplyJob = () => {
             if (data.success) {
                 setJobData(data.job)
             } else {
-                toast.errot(data.message)
+                toast.error(data.message)
             }
 
         }
@@ -49,7 +49,7 @@ const ApplyJob = () => {
                 return toast.error('Login to apply for jobs')  
                }
 
-               if (!userData.resume) {
+               if (!userData || !userData.resume) {
                 navigate('/applications')
                 return toast.error('Upload resume to apply')
                }
