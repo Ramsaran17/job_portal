@@ -1,13 +1,17 @@
 import mongoose from "mongoose";
 
-//Function to connect MongoDB database
+// Function to connect MongoDB database
 const connectDB = async () => {
+    try {
+        mongoose.connection.on("connected", () => {
+            console.log("Database Connected");
+        });
 
-   mongoose.connection.on('connected',() => console.log('Database Connected'))
- 
-   await mongoose.connect(`${process.env.MONGODB_URI}/job-portal`)
-   
-}
+        await mongoose.connect(process.env.MONGODB_URI);
+    } catch (error) {
+        console.error("Database connection failed:", error.message);
+        throw error;
+    }
+};
 
-
-export default connectDB
+export default connectDB;
