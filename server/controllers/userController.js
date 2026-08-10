@@ -9,7 +9,7 @@ import { getAuth } from "@clerk/express";
 export const getUserData = async (req, res) => {
 
     const { userId } = getAuth(req);
-
+console.log("CLERK USER ID FROM TOKEN:", userId);
 
     try {
 
