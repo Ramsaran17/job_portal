@@ -28,6 +28,55 @@ A full-stack job portal where job seekers can find and apply for jobs, while rec
 
 ```text
 job_portal/
-├── client/     # React frontend
-├── server/     # Node.js + Express backend
+├── client/        # React frontend
+├── server/        # Node.js + Express backend
 └── README.md
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- MongoDB
+- Clerk
+- Cloudinary
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Ramsaran17/job_portal.git
+cd job_portal
+```
+
+Install dependencies:
+
+```bash
+cd client
+npm install
+
+cd ../server
+npm install
+```
+
+Create the required `.env` files in the `client` and `server` folders and add your environment variables.
+
+### Run Locally
+
+Start the backend:
+
+```bash
+cd server
+npm run server
+```
+
+Start the frontend in a separate terminal:
+
+```bash
+cd client
+npm run dev
+```
+
+The application will be available at the local Vite URL shown in the terminal.
