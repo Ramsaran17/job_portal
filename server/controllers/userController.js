@@ -31,14 +31,14 @@ export const getUserData = async (req, res) => {
         });
 
     } catch (err) {
-        console.log(err);
+        console.log("USER ERROR:", err);
+
         res.json({
             success: false,
             message: err.message
         });
     }
 };
-
 
 //Apply for a job
 export const applyForJob = async (req, res) => {
