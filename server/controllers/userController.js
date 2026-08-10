@@ -9,29 +9,35 @@ import { getAuth } from "@clerk/express";
 export const getUserData = async (req, res) => {
 
     const { userId } = getAuth(req);
-console.log("CLERK USER ID FROM TOKEN:", userId);
+
+    console.log("CLERK USER ID:", userId);
 
     try {
 
         const user = await User.findById(userId);
 
+        console.log("MONGODB USER:", user);
 
         if (!user) {
             return res.json({
-                success:false,
-                message:"User Not Found"
+                success: false,
+                message: "User Not Found"
             });
         }
 
         res.json({
-            success:true,
+            success: true,
             user
         });
 
-    } catch(err){
+    } catch (err) {
         console.log(err);
+        res.json({
+            success: false,
+            message: err.message
+        });
     }
-}
+};
 
 
 //Apply for a job
