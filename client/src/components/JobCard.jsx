@@ -12,6 +12,10 @@ const JobCard = ({ job }) => {
                     className='h-8 w-auto'
                     src={job.companyId.image}
                     alt={job.companyId.name}
+                    onError={(e) => {
+                        e.target.onerror = null
+                        e.target.src = assets.company_icon
+                    }}
                 />
 
                 <span className='font-medium text-gray-700'>
